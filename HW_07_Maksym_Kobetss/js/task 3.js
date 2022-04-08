@@ -1,0 +1,40 @@
+// Задание 3
+// Напиши скрипт для создания галлереи изображений по массиву данных.
+// В HTML есть список ul#gallery.
+// <ul id="gallery"></ul>
+// Используй массив объектов images для создания тегов img вложенных в li. Для создания разметки используй шаблонные строки и insertAdjacentHTML().
+// Все элементы галереи должны добавляться в DOM за одну операцию вставки.
+// Добавь минимальное оформление галереи флексбоксами или гридами через css-классы.
+const images = [
+  {
+    url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'White and Black Long Fur Cat',
+  },
+  {
+    url: 'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
+  },
+  {
+    url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Group of Horses Running',
+  },
+]
+
+let ul = document.querySelector('#gallery')
+
+function createLi({ url, alt }) {
+  let li = document.createElement('li')
+  let img = document.createElement('img')
+  img.setAttribute('src', url)
+  img.setAttribute('alt', alt)
+  img.setAttribute('style', 'width: 500px')
+  ul.setAttribute('style', 'display:flex')
+  li.append(img)
+  return li
+}
+
+let list = images.map(li => {
+  return createLi(li)
+})
+
+ul.append(...list)
