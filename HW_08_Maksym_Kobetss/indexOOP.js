@@ -55,8 +55,8 @@ class Gallery {
 
     this.lightBoxRef.classList.toggle("is-open");
 
-    this.lightBoxButtonRef.addEventListener("click", close);
-    this.lightBoxOverlayRef.addEventListener("click", close);
+    this.lightBoxButtonRef.addEventListener("click", this.close);
+    this.lightBoxOverlayRef.addEventListener("click", this.close);
   };
 
   close = () => {
@@ -83,24 +83,24 @@ class Gallery {
   keybord = () => {
     document.addEventListener("keydown", (event) => {
       if (event.code == "Escape") {
-        close();
+        this.close();
       }
       if (
         event.code == "ArrowRight" &&
         this.indexNow < this.gallery.length - 1
       ) {
-        nextImage();
+        this.nextImage();
       }
       if (event.code == "ArrowLeft" && this.indexNow > 0) {
-        prevImage();
+        this.prevImage();
       }
     });
   };
 
   init = () => {
-    createGallery();
-    this.ulRef.addEventListener("click", open);
-    keybord();
+    this.createGallery();
+    this.ulRef.addEventListener("click", this.open);
+    this.keybord();
   };
 }
 
