@@ -1,19 +1,14 @@
-const daysRef = document.querySelector('[data-value="days"]');
-const hoursRef = document.querySelector('[data-value="hours"]');
-const minsRef = document.querySelector('[data-value="mins"]');
-const secsRef = document.querySelector('[data-value="secs"]');
-const pRef = document.querySelector('[data-value="end"]');
-const timerRef = document.querySelector(".timer");
-const inputRef = document.querySelector(".datetime");
+import refs from "./refs.js";
+
 let promotion;
 function getTimeCode() {
-  promotion = new Date(inputRef.value).getTime();
-  if (inputRef.value) {
+  promotion = new Date(refs.input.value).getTime();
+  if (refs.input.value) {
     setPromotion(promotion);
-    inputRef.removeEventListener("change", getTimeCode);
+    refs.input.removeEventListener("change", getTimeCode);
   }
 }
-inputRef.addEventListener("change", getTimeCode);
+refs.input.addEventListener("change", getTimeCode);
 
 function setPromotion(promotionDate) {
   let promitionTimerId = setInterval(() => {
@@ -24,15 +19,15 @@ function setPromotion(promotionDate) {
     let mins = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((dist % (1000 * 60)) / 1000);
 
-    daysRef.innerText = days;
-    hoursRef.innerText = hours;
-    minsRef.innerText = mins;
-    secsRef.innerText = seconds;
+    refs.days.innerText = days;
+    refs.hours.innerText = hours;
+    refs.mins.innerText = mins;
+    refs.secs.innerText = seconds;
 
     if (dist < 0) {
       clearInterval(promitionTimerId);
-      pRef.innerText = "Promotion ended";
-      timerRef.classList.add("off");
+      refs.p.innerText = "Promotion ended";
+      refs.timer.classList.add("off");
     }
   }, 1000);
 }
