@@ -6,14 +6,15 @@ const pRef = document.querySelector('[data-value="end"]');
 const timerRef = document.querySelector(".timer");
 const inputRef = document.querySelector(".datetime");
 let promotion;
-
-inputRef.addEventListener("change", () => {
+function getTimeCode() {
   promotion = new Date(inputRef.value).getTime();
-
   if (inputRef.value) {
     setPromotion(promotion);
+    inputRef.removeEventListener("change", getTimeCode);
   }
-});
+}
+inputRef.addEventListener("change", getTimeCode);
+
 function setPromotion(promotionDate) {
   let promitionTimerId = setInterval(() => {
     let dist = promotionDate - Date.now();
