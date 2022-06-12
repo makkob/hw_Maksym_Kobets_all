@@ -1,0 +1,12 @@
+span{
+   font-size: 42px;
+}
+p{
+    font-size: 56px;
+}
+
+.off{
+    display: none;
+    position:absolute
+  
+}
