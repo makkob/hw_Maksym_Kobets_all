@@ -1,5 +1,6 @@
 import refs from "./js/refs";
 import "lodash";
+import "./css/common.css";
 
 class Counry {
   constructor(refs) {

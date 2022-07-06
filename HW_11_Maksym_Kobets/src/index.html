@@ -26,7 +26,9 @@
     />
   </head>
   <body>
-    <div><input type="search" placeholder="Введите страну ..." /></div>
+    <div class="search-country">
+      <input type="search" placeholder="Введите страну ..." />
+    </div>
     <div id="root"></div>
 
     <template class="country-template">
@@ -41,12 +43,9 @@
       <li class="country__population">
         Население: {{this.population}} человек
       </li>
-      <br />
-      <ul class="country__language">
-        Языки: {{#each this.languages}}
-        <li class="tag-list__item">{{.}}</li>
-        {{/each}}
-      </ul>
+
+      <li>Языки: {{#each this.languages}}{{.}}, {{/each}}</li>
+
       {{/each}}
     </template>
 

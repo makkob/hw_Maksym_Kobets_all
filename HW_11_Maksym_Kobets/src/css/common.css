@@ -1,0 +1,20 @@
+body {
+    background-color: rgb(212, 205, 189);
+    color: black;
+    font-size: 20px;
+   
+    letter-spacing: 0.02em;
+}
+.search-country{
+   text-align: center;
+}
+#root{
+   background-color:  rgb(233, 226, 210);
+   margin: 40px 400px 200px 400px;
+   border-radius: 8px;
+   padding: 40px;
+}
+input{
+    font-size:20px;
+border-radius: 4px;
+}
