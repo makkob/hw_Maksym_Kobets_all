@@ -1,18 +1,35 @@
-// export { Gallery };
-// import "../css/common.css";
+export { Gallery };
+import "../css/common.css";
 
-// class Gallery {
-//   constructor() {}
+import galleryMarkup from "../templates/galleryTemplates.handlebars";
+import "../../node_modules/material-icons";
+import "lodash";
 
-//   init = () => {
-//     async get(url, options = {}) {
-//       try {
-//           let response = await fetch(url, options);
-//           let data = await response.json();
-//           return data;
-//       } catch (err) {
-//           return err;
-//       }
-//   }
-//   };
-// }
+class Gallery {
+  constructor(URI, refs) {
+    this.URI = URI;
+    this.refs = refs;
+  }
+
+  init = () => {
+    this.refs.input.addEventListener("input", _.debounce(this.get, 800));
+  };
+
+  async get() {
+    try {
+      let findIMG = this.refs.input.value;
+      console.log(findIMG);
+      let searchReq = `&q=${findIMG}`;
+      // &page=${page}
+      let response = await fetch(this.URI + searchReq);
+
+      let data = await response.json();
+      console.log(data.hits);
+
+      let markup = galleryMarkup(data.hits);
+      this.refs.div.innerHTML = markup;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+}

@@ -12,16 +12,15 @@ class Gallery {
   }
 
   init = () => {
-    this.refs.input.addEventListener("input", _.debounce(this.getInput, 500));
-    this.get();
+    this.refs.input.addEventListener("input", _.debounce(this.getInput, 800));
+    this.fetchIMG();
   };
 
-  async get() {
+  async fetchIMG(searchReq) {
     try {
-      let response = await fetch(this.URI);
+      let response = await fetch(this.URI + searchReq);
 
       let data = await response.json();
-      console.log(data.hits);
 
       let markup = galleryMarkup(data.hits);
       this.refs.div.innerHTML = markup;
@@ -30,6 +29,8 @@ class Gallery {
     }
   }
   getInput = () => {
-    console.log(this.refs.input.value);
+    let findIMG = this.refs.input.value;
+    let searchReq = `&q=${findIMG}`;
+    this.fetchIMG(searchReq);
   };
 }
