@@ -1,4 +1,4 @@
 export default {
   input: document.querySelector("input"),
-  div: document.querySelector("#root"),
+  ul: document.querySelector("#root"),
 };

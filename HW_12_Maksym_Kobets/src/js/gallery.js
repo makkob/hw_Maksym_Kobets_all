@@ -23,7 +23,7 @@ class Gallery {
       let data = await response.json();
 
       let markup = galleryMarkup(data.hits);
-      this.refs.div.innerHTML = markup;
+      this.refs.ul.innerHTML = markup;
     } catch (err) {
       console.error(err);
     }

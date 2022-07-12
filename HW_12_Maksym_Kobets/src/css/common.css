@@ -5,4 +5,30 @@ body {
 background-color: rgb(168, 175, 165);
 }
 
+#root{
+ display: grid;
+  width: 97%;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 50px;
+  padding: 0;
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+background-color: rgb(197, 184, 162);
+  border-radius: 8px;
+  padding: 40px;
+}
 
+
+#search-form{
+    text-align: center;
+ }
+
+
+ input{
+     font-size:20px;
+ border-radius: 4px;
+ }
+ .search-result{
+    width: 320px;
+ }
