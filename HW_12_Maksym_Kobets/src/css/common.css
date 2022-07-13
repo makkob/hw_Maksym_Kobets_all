@@ -31,4 +31,14 @@ background-color: rgb(197, 184, 162);
  }
  .search-result{
     width: 320px;
+    width: 320px;
+ }
+ li{
+ 
+  border-radius: 8px;
+  background-color: rgba(179, 179, 170, 0.849);
+  border: 3px double rgba(39, 39, 36, 0.425);
+  
+  padding: 1%;
+  position:static;
  }
